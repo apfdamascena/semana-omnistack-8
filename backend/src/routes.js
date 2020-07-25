@@ -1,14 +1,8 @@
 const express = require('express');
+const developersController = require('../src/controllers/developersController.js')
 
 const routes = express.Router();
 
-routes.get('/', (serverRequest,serverAnswer) => {
-    return serverAnswer.json({message: `opaaaaaaaa ${serverRequest.query.name}`});
-});
-
-routes.post('/dev', (serverRequest, serverAnswer) => {
-    console.log(serverRequest.body);
-    return serverAnswer.json({ok : true});
-});
+routes.post('/dev', developersController.store);
 
 module.exports = routes;
