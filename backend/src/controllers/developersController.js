@@ -2,6 +2,19 @@ const axios = require('axios');
 const developers = require('../models/developers');
 
 module.exports = {
+    async index(serverRequest, serverAnswer){
+        const {user} = serverRequest.headers;
+        const loggedDeveloper = await developers.findById(user);
+
+        const users = await developers.find({
+            $and: [
+                { _id:{$ne: user}},
+                {_id: {$nin: loggedDeveloper.likes}},
+                {_id: {$nin: loggedDeveloper.dislikes}}
+            ],
+        })
+        return serverAnswer.json(users);
+    },
     async store(serverRequest, serverAnswer){
         const {username} = serverRequest.body;
         const doesTheUserExist = await developers.findOne({user: username});
