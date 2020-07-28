@@ -1,0 +1,34 @@
+.loginContainer {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer form {
+    max-width: 300px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.loginContainer form input {
+    margin: 20px 0;
+
+    border: 1px solid #DDD;
+    border-radius: 4px;
+
+    height: 48px;
+
+    padding: 0 20px;
+
+    font-size: 1.6rem;
+    color : #666;
+}
+
+.loginContainer form input::placeholder {
+    color: #999;
+}

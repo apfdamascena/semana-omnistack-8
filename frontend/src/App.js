@@ -1,10 +1,12 @@
 import React from 'react';
-import tindevLogo from './Images/logo.svg';
 import './App.css';
+import HomePage from './Pages/HomePage/HomePage';
+
 
 function App() {
   return (
     <div className="App">
+      <HomePage/>
     </div>
   );
 }
