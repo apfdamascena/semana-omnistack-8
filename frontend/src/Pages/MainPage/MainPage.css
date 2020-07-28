@@ -1,0 +1,74 @@
+.mainContainer {
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding: 50px 0;
+
+    text-align: center;
+}
+
+.mainContainer ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+    margin-top: 50px;
+}
+
+.mainContainer ul li {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer ul li img {
+    max-width: 100%;
+}
+
+.mainContainer ul li footer {
+    flex: 1;
+    text-align: left;
+
+    background: #FFF;
+
+    border: 1px solid #EEE;
+    border-radius: 0 0 5px 5px;
+    padding: 15px 20px;
+
+}
+
+.mainContainer ul li footer strong {
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.mainContainer ul li footer p {
+    font-size: 1.4rem;
+    line-height: 20px;
+    color: #999;
+
+    margin-top: 5px;
+}
+
+.mainContainer ul li .likeOrDislikeButtons {
+    margin-top: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.mainContainer ul li .likeOrDislikeButtons button {
+    height: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.05);
+    
+    border: 0;
+    border-radius: 4px;
+
+    background: #FFF;
+    cursor: pointer;
+}
+
+.mainContainer ul li .likeOrDislikeButtons button:hover img{
+    transform: translateY(-3px);
+    transition: all 0.2s;
+}
