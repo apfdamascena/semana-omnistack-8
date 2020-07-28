@@ -16,7 +16,7 @@
 }
 
 .loginContainer form input {
-    margin: 20px 0;
+    margin-top: 20px;
 
     border: 1px solid #DDD;
     border-radius: 4px;
@@ -31,4 +31,20 @@
 
 .loginContainer form input::placeholder {
     color: #999;
+}
+
+.loginContainer form button {
+    margin-top: 10px;
+
+    border: 0;
+    border-radius: 4px;
+
+    height: 48px;
+
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #FFF;
+
+    background: #DF4723;
+    cursor: pointer;
 }
