@@ -7,7 +7,7 @@ export default function Routes(){
     return (
         <BrowserRouter>
             <Route path = "/" exact component = {HomePage}/> 
-            <Route path = "/main" component = {MainPage}/> 
+            <Route path = "/dev/:id" component = {MainPage}/> 
         </BrowserRouter>
     );
 }

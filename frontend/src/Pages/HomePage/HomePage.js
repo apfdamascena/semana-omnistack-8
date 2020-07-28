@@ -1,15 +1,22 @@
 import React, {useState} from 'react';
 import tindevLogo from '../../Images/logo.svg';
 import './HomePage.css';
+import API from '../../Services/api.js';
 
 export default function HomePage({history}) {
     const [username, setUsername] = useState('');
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault();
         console.log(username);
 
-        history.push('/main');
+        const response = await API.post('/dev', {
+            username,
+        }).catch((error) => {console.log(error);});
+
+        const { _id } = response.data;
+
+        history.push(`/dev/${_id}`);
     }
 
     return (

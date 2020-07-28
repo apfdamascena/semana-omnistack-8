@@ -1,8 +1,8 @@
 import React from 'react';
 import './MainPage.css';
 
-export default function MainPage(){
+export default function MainPage({match}){
     return(
-        <h2>hellloooooow world</h2>
+        <h2>{match.params.id}</h2>
     );
 }
