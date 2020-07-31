@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MainPage.css';
+import { Link } from 'react-router-dom';
 
 import API from '../../Services/api';
 
@@ -25,7 +26,11 @@ export default function MainPage({ match }) {
     }, [match.params.id])
 
     async function handleLike(userID) {
-        console.log('like', userID);
+        await API.post(`/dev/${userID}/likes`, null, {
+            headers: { user: match.params.id }
+        })
+
+        setUsers(users.filter(user => user._id != userID));
     }
 
     async function handleDislike(userID) {
@@ -38,7 +43,10 @@ export default function MainPage({ match }) {
 
     return (
         <div className="mainContainer">
-            <img src={logo} alt="Tindev Logo" />
+
+            <Link to = "/">
+                <img src={logo} alt="Tindev Logo" />
+            </Link>
 
             {users.length > 0 ? (
                 <ul>
@@ -61,10 +69,10 @@ export default function MainPage({ match }) {
                     ))}
                 </ul>
             ) : (
-                <div className = "emptyUsers">
-                    Acabou! Nao há mais usuarios por perto!
-                </div>
-            )
+                    <div className="emptyUsers">
+                        Acabou! Nao há mais usuarios por perto!
+                    </div>
+                )
             }
 
         </div>
