@@ -24,28 +24,49 @@ export default function MainPage({ match }) {
         loadUsers();
     }, [match.params.id])
 
+    async function handleLike(userID) {
+        console.log('like', userID);
+    }
+
+    async function handleDislike(userID) {
+        await API.post(`/dev/${userID}/dislikes`, null, {
+            headers: { user: match.params.id }
+        })
+
+        setUsers(users.filter(user => user._id != userID));
+    }
+
     return (
         <div className="mainContainer">
             <img src={logo} alt="Tindev Logo" />
-            <ul>
-                {users.map(user => (
-                    <li>
-                        <img src= {user.avatar} alt = {user.name}/>
-                        <footer>
-                            <strong>{user.name}</strong>
-                            <p>{user.bio}</p>
-                        </footer>
-                        <div className="likeOrDislikeButtons">
-                            <button type="button">
-                                <img src={like} alt="like" />
-                            </button>
-                            <button type="button">
-                                <img src={dislike} alt="dislike" />
-                            </button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+
+            {users.length > 0 ? (
+                <ul>
+                    {users.map(user => (
+                        <li key={user._id}>
+                            <img src={user.avatar} alt={user.name} />
+                            <footer>
+                                <strong>{user.name}</strong>
+                                <p>{user.bio}</p>
+                            </footer>
+                            <div className="likeOrDislikeButtons">
+                                <button type="button" onClick={() => handleLike(user._id)}>
+                                    <img src={like} alt="like" />
+                                </button>
+                                <button type="button" onClick={() => handleDislike(user._id)}>
+                                    <img src={dislike} alt="dislike" />
+                                </button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div className = "emptyUsers">
+                    Acabou! Nao há mais usuarios por perto!
+                </div>
+            )
+            }
+
         </div>
     );
 }

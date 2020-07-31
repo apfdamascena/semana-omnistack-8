@@ -72,3 +72,10 @@
     transform: translateY(-3px);
     transition: all 0.2s;
 }
+
+.mainContainer .emptyUsers {
+    font-size: 3.2rem;
+    color: #999;
+    font-weight: bold;
+    margin-top: 250px;
+}
